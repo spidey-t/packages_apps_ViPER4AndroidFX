@@ -1,0 +1,39 @@
+soong_namespace {
+}
+
+android_app_import {
+    name: "ViPER4Android",
+    owner: "llsl",
+    apk: "prebuilts/system/priv-app/ViPER4Android/ViPER4Android.apk",
+    preprocessed: true,
+    presigned: true,
+    dex_preopt: {
+        enabled: false,
+    },
+    privileged: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libv4a_re",
+    owner: "llsl",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "prebuilts/vendor/lib64/soundfx/libv4a_re.so",
+            ],
+            shared_libs: [
+                "liblog",
+                "libm",
+                "libdl",
+                "libc",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    relative_install_path: "soundfx",
+    prefer: true,
+    soc_specific: true,
+}
