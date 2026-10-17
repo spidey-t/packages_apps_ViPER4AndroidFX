@@ -20,19 +20,24 @@ cc_prebuilt_library_shared {
         none: true,
     },
     target: {
+        android_arm: {
+            srcs: [
+                "prebuilts/vendor/lib/soundfx/libv4a_re.so",
+            ],
+        },
         android_arm64: {
             srcs: [
                 "prebuilts/vendor/lib64/soundfx/libv4a_re.so",
             ],
-            shared_libs: [
-                "liblog",
-                "libm",
-                "libdl",
-                "libc",
-            ],
         },
     },
-    compile_multilib: "64",
+    shared_libs: [
+        "liblog",
+        "libm",
+        "libdl",
+        "libc",
+    ],
+    compile_multilib: "both",
     relative_install_path: "soundfx",
     prefer: true,
     soc_specific: true,
